@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Schema for GET /api/users/{id} — validates the structure of a single user response",
+  "type": "object",
+  "required": ["data", "support"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["id", "email", "first_name", "last_name", "avatar"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Unique user identifier, always a positive integer"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User's email address"
+        },
+        "first_name": {
+          "type": "string",
+          "description": "User's first name"
+        },
+        "last_name": {
+          "type": "string",
+          "description": "User's last name"
+        },
+        "avatar": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the user's avatar image"
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "required": ["url", "text"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

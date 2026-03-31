@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="API Test Suite" verbose="1" parallel="methods" thread-count="3">
+
+    <!--
+        parallel="methods" — each test METHOD runs in its own thread.
+        
+        This is safe for API tests because:
+        - No shared browser state (unlike UI tests)
+        - Each test makes independent HTTP calls
+        - No ThreadLocal needed — RestAssured is stateless
+        
+        API tests are naturally faster than UI tests,
+        but parallelism still cuts total time significantly
+        when you have 50+ test methods.
+    -->
+
+    <test name="User API Tests">
+        <classes>
+            <class name="com.api.tests.UserTests"/>
+        </classes>
+    </test>
+
+    <test name="Auth API Tests">
+        <classes>
+            <class name="com.api.tests.AuthTests"/>
+        </classes>
+    </test>
+
+</suite>
